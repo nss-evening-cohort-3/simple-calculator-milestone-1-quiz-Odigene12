@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace SimpleCalculator
 {
-    class Program
+    public class Subtraction
     {
-        static void Main(string[] args)
+        public int Subtracting(int num1, int num2)
         {
-            String prompt = "> ";
-            Console.Write(prompt);
-            Console.Read();
+            return num1 - num2;
         }
     }
 }
