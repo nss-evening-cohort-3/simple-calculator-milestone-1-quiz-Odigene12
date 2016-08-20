@@ -46,6 +46,7 @@
     <Compile Include="Addition.cs" />
     <Compile Include="Counter.cs" />
     <Compile Include="Division.cs" />
+    <Compile Include="Evaluation.cs" />
     <Compile Include="Expression.cs" />
     <Compile Include="Modulus.cs" />
     <Compile Include="Multiplication.cs" />
