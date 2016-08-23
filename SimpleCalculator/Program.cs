@@ -10,24 +10,50 @@ namespace SimpleCalculator
     {
         static void Main(string[] args)
         {
+            
             Evaluation newevaluation = new Evaluation();
             Expression newexpress = new Expression();
-            Stack forresult = new Stack();
-            Stack forexpress = new Stack();
-            int savedresult = forresult.last;
-            string savedexpress = forexpress.lastq;
-            Counter counter = new Counter();
-            int programcounter = counter.mycounter;
-            string prompt = "[" + programcounter + "]> ";
-            Console.Write(prompt);
-            counter.CounterIncrease();
-            Console.Read();
-            string userinput = Console.ReadLine().ToLower();
+            Stack storage = new Stack();
+            int counter = 0;
 
-            newexpress.MatchCheck(userinput);
-            newexpress.Extracting(userinput);
+            while (true)
+            {
+                string prompt = "[" + counter + "]> ";
 
-            int result = newevaluation.Evaluate(newexpress.firstnumber, newexpress.secondnumber, newexpress.theOperator);
+                Console.Write(prompt);
+                string userinput = Console.ReadLine().ToLower();
+
+                
+                
+
+                newexpress.MatchCheck(userinput);
+                newexpress.Extracting(userinput);
+               
+
+                int result = newevaluation.Evaluate(newexpress.firstnumber, newexpress.secondnumber, newexpress.theOperator);
+
+                if (userinput == "last")
+                {
+                    Console.WriteLine(storage.last);
+                }
+                else if (userinput == "lastq")
+                {
+                    Console.WriteLine(storage.lastq);
+                }
+
+                storage.last = result;
+                storage.lastq = userinput;
+
+               
+
+                Console.WriteLine(result);           
+                counter++;
+
+                
+
+
+            }
+           
 
            
         }

@@ -10,13 +10,13 @@ namespace SimpleCalculator
    public class Evaluation
     {
         //Use the addition class to evaluate an expression
-        Expression forevaluation = new Expression();
+      
         Addition foraddition = new Addition();
         Subtraction forsubtraction = new Subtraction();
         Multiplication formultiply = new Multiplication();
         Division fordivision = new Division();
         Modulus formodulus = new Modulus();
-
+        
 
         public int Evaluate(int firstnumber, int secondnumber, string theOperator)
         {
