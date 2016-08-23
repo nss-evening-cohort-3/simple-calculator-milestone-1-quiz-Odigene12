@@ -76,6 +76,36 @@ namespace SimpleCalculator
             else throw new FormatException("Please enter the correct word format");
         }
 
+        public bool ConstantCheck(string input)
+        {
+            //Create the pattern that the user must follow when entering his or her expression
+            string constantpattern = @"^([\w+]\s*[=]\s*[\d+])$";
+            Match constantmatch = Regex.Match(input, constantpattern);
+
+            if (constantmatch.Success)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+                throw new MissingFieldException("Please enter correct Command");
+            }
+
+        }
+
+        public void MatchConstantExpression(string input)
+        {
+            if (ConstantCheck(input) == true)
+            {
+                string constantExpressionPattern = @"^(?<constant>[\w+]\s*[=]\s*(?<constvalue>[\d+]))$";
+                Match matchconstant = Regex.Match(input, constantExpressionPattern);
+                constant = matchconstant.Groups["constant"].Value;
+                constantvalue = Convert.ToInt32(matchconstant.Groups["constvalue"].Value);
+            }
+            
+        }
+
         public int firstnumber { get; set; }
 
         public int secondnumber { get; set; }
@@ -83,7 +113,10 @@ namespace SimpleCalculator
         public string theOperator { get; set; }
 
 
+        //public variables to use to save constants and their values
+        public string constant { get; set; }
 
+        public int constantvalue { get; set; }
 
     }
 }

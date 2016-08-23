@@ -14,6 +14,7 @@ namespace SimpleCalculator
             Evaluation newevaluation = new Evaluation();
             Expression newexpress = new Expression();
             Stack storage = new Stack();
+            Constant constantstorage = new Constant();
             int counter = 0;
 
             while (true)
@@ -23,9 +24,9 @@ namespace SimpleCalculator
                 Console.Write(prompt);
                 string userinput = Console.ReadLine().ToLower();
 
-                
-                
 
+                newexpress.ConstantCheck(userinput);
+                newexpress.MatchConstantExpression(userinput);
                 newexpress.MatchCheck(userinput);
                 newexpress.Extracting(userinput);
                
@@ -40,7 +41,8 @@ namespace SimpleCalculator
                 {
                     Console.WriteLine(storage.lastq);
                 }
-
+                
+                
                 storage.last = result;
                 storage.lastq = userinput;
 
