@@ -26,30 +26,47 @@ namespace SimpleCalculator
 
 
                 newexpress.ConstantCheck(userinput);
-                newexpress.MatchConstantExpression(userinput);
-                newexpress.MatchCheck(userinput);
-                newexpress.Extracting(userinput);
-               
-
-                int result = newevaluation.Evaluate(newexpress.firstnumber, newexpress.secondnumber, newexpress.theOperator);
-
-                if (userinput == "last")
+                if (newexpress.ConstantCheck(userinput) == true)
                 {
-                    Console.WriteLine(storage.last);
+                    newexpress.MatchConstantExpression(userinput);
+                    constantstorage.StoreConstantsAndValue(newexpress.constant, newexpress.constantvalue);
+                    if (userinput == newexpress.constant)
+                    {
+                        Console.WriteLine(constantstorage.GetsConstantsAndValue(userinput));
+                    }
+                    else break;
                 }
-                else if (userinput == "lastq")
+                else
                 {
-                    Console.WriteLine(storage.lastq);
-                }
+                    newexpress.MatchCheck(userinput);
+                    newexpress.Extracting(userinput);
+
+
+                    int result = newevaluation.Evaluate(newexpress.firstnumber, newexpress.secondnumber, newexpress.theOperator);
+
+                    if (userinput == "last")
+                    {
+                        Console.WriteLine(storage.last);
+                    }
+                    else if (userinput == "lastq")
+                    {
+                        Console.WriteLine(storage.lastq);
+                    }
+
+
+                    storage.last = result;
+                    storage.lastq = userinput;
+
+
+
+                    Console.WriteLine(result);
+                    counter++;
+                } 
+                
+                    
                 
                 
-                storage.last = result;
-                storage.lastq = userinput;
-
-               
-
-                Console.WriteLine(result);           
-                counter++;
+                
 
                 
 

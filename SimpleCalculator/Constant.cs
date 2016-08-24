@@ -11,9 +11,10 @@ namespace SimpleCalculator
         Expression forstorage = new Expression();
         Dictionary<string, int> userconstants = new Dictionary<string, int>();
 
-        public void StoreConstantsAndValue()
+        public void StoreConstantsAndValue(string constant, int value)
         {
-            userconstants.Add(forstorage.constant, forstorage.constantvalue);
+            userconstants.Add(constant.ToLower(), value);
+           
         }
 
         public int GetsConstantsAndValue(string input)
@@ -24,7 +25,8 @@ namespace SimpleCalculator
 
                 return returnedkey;
             }
-            else return 0;
+            else throw new MissingMemberException("Can't find the int");
+            
             
         }
        
