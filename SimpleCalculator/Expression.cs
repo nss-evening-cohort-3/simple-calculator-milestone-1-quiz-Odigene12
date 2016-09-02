@@ -98,9 +98,10 @@ namespace SimpleCalculator
         {
             if (ConstantCheck(input) == true)
             {
-                string constantExpressionPattern = @"^(?<constant>[\w+]\s*[=]\s*(?<constvalue>[\d+]))$";
+                string constantExpressionPattern = @"^(?<constant>[\w+])\s*(?<operator>[=])\s*(?<constvalue>\-*[\d+])$";
                 Match matchconstant = Regex.Match(input, constantExpressionPattern);
                 constant = matchconstant.Groups["constant"].Value;
+                theOperator = matchconstant.Groups["operator"].Value;
                 constantvalue = Convert.ToInt32(matchconstant.Groups["constvalue"].Value);
             }
             
